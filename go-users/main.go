@@ -19,7 +19,7 @@ func main() {
 	r.Put("/users/{id}", UpdateUserHandler)
 	r.Delete("/users/{id}", DeleteUserHandler)
 
-	r.Handle("/*", http.StripPrefix("/", http.FileServer(http.Dir("./public"))))
+	r.Handle("/*", http.StripPrefix("/", http.FileServer(http.Dir("./frontend"))))
 
 
 	log.Println("🚀 Server running on :8080")
