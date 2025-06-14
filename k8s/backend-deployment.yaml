@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: go-api
-          image: olymahmudmugdho/gke-3-tier-app
+          image: us-west1-docker.pkg.dev/mugdho-gcp-03-158755416c16/go-api-repo/go-api
           ports:
             - containerPort: 8080
           env:
