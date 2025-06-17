@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: go-api
-          image: us-west1-docker.pkg.dev/mugdho-gcp-03-158755416c16/go-api-repo/go-api
+          image: olymahmudmugdho/go-users
           ports:
             - containerPort: 8080
           env:
