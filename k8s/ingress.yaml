@@ -3,9 +3,8 @@ kind: Ingress
 metadata:
   name: go-api-ingress
   namespace: go-app
-  annotations:
-    kubernetes.io/ingress.class: "nginx" # or nginx if using NGINX
 spec:
+  ingressClassName: nginx
   rules:
     - http:
         paths:
