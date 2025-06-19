@@ -1,10 +1,22 @@
 #!/bin/bash
-helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+
+# Add and update the repo
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx 2>/dev/null || true
 helm repo update
 
-# Create a namespace
-kubectl create namespace ingress-nginx
+# Create namespace if it doesn't exist
+if ! kubectl get namespace ingress-nginx >/dev/null 2>&1; then
+  kubectl create namespace ingress-nginx
+  echo "Namespace 'ingress-nginx' created."
+else
+  echo "Namespace 'ingress-nginx' already exists."
+fi
 
-# Install
-helm install ingress-nginx ingress-nginx/ingress-nginx \
-  --namespace ingress-nginx
+# Install the ingress controller only if not already installed
+if ! helm status ingress-nginx -n ingress-nginx >/dev/null 2>&1; then
+  helm install ingress-nginx ingress-nginx/ingress-nginx \
+    --namespace ingress-nginx
+  echo "Ingress NGINX installed."
+else
+  echo "Ingress NGINX is already installed in namespace 'ingress-nginx'."
+fi
