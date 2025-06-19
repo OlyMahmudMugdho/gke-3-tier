@@ -1,3 +1,4 @@
+#!/bin/bash
 kubectl create ns monitor && \
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts && \
 helm repo update && \
