@@ -35,3 +35,22 @@ resource "google_compute_firewall" "jenkins_master_rule" {
 
   priority = 100
 }
+
+
+resource "google_compute_firewall" "jenkins_agent_ssh_rule" {
+  name    = var.jenkins_agent_rule_name
+  network = google_compute_network.workloads_network.name
+
+  direction = "INGRESS"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+
+  source_ranges = var.jenkins_agent_rule_ssh_source
+
+  source_tags = var.jenkins_agent_tags
+
+  priority = 100
+}

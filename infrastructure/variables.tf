@@ -54,6 +54,38 @@ variable "jenkins_master_vm_name" {
 
 
 variable "gke_node_machine_type" {
-  type = string
+  type    = string
   default = "e2-standard-4"
+}
+
+variable "jenkins_master_machine_type" {
+  type    = string
+  default = "e2-standard-4"
+}
+
+variable "jenkins_agent_machine_type" {
+  type    = string
+  default = "e2-standard-4"
+}
+
+
+variable "jenkins_agent_vm_name" {
+  type    = string
+  default = "e2-standard-4"
+}
+
+variable "jenkins_agent_tags" {
+  type    = set(string)
+  default = ["jenkins-agent"]
+}
+
+variable "jenkins_agent_rule_ssh_source" {
+  type    = set(string)
+  default = ["0.0.0.0/0"]
+}
+
+
+variable "jenkins_agent_rule_name" {
+  type    = string
+  default = "jenkins-agent-rule"
 }

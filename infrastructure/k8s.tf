@@ -15,6 +15,7 @@ resource "google_container_cluster" "workload_cluster" {
 
   node_config {
     machine_type = var.gke_node_machine_type
-
+    disk_type = "pd-balanced"
+    disk_size_gb = 70
   }
 }
