@@ -5,6 +5,8 @@ resource "google_container_cluster" "workload_cluster" {
   subnetwork         = google_compute_subnetwork.kubernetes_workloads_subnet.id
   location           = var.zone
 
+  deletion_protection = false
+
   release_channel {
     channel = "RAPID"
   }

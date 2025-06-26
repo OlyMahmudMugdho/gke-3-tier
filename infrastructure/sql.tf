@@ -3,13 +3,13 @@ resource "google_sql_database_instance" "postgres_instance" {
   region           = "us-central1"
   database_version = "POSTGRES_17"
 
-
+  
   settings {
     tier      = "db-custom-4-16384"
     edition   = "ENTERPRISE"
     disk_size = 100
     disk_type = "PD_SSD"
-
+    deletion_protection_enabled = false
     ip_configuration {
       ipv4_enabled = true
       authorized_networks {
@@ -19,7 +19,7 @@ resource "google_sql_database_instance" "postgres_instance" {
     }
   }
 
-  deletion_protection = true
+  deletion_protection = false
 }
 
 resource "google_sql_database" "database" {
